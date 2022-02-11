@@ -1,0 +1,11 @@
+{
+  "name": "contactimporter",
+  "version": "1.0.0",
+  "description": "Homework for Koombea, this is a contact importer project to handle csv files and set information to database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jose Ceron",
+  "license": "ISC"
+}
