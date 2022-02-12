@@ -4,7 +4,7 @@ const {
   isValidPhone
 } = require("../utils/validators");
 
-test('are valid names', () => {
+test('Are valid names?', () => {
 
   let names = [
     'jose luis',
@@ -34,7 +34,7 @@ test('The names contains special chars', () => {
   });
 })
 
-test('validate correct dates formats', () => {
+test('Validate correct dates formats', () => {
   let dates = [
     '2021-12-01',
     '19820128',    
@@ -45,7 +45,7 @@ test('validate correct dates formats', () => {
   })
 })
 
-test('validator for bad format dates', () => {
+test('Validator for bad format dates', () => {
   let dates = [
     '2021-15-01',
     '1980128',    
@@ -58,7 +58,7 @@ test('validator for bad format dates', () => {
   })
 })
 
-test('phone logic validation', () => {
+test('Phone logic validation', () => {
   let phones = [
     '(+57) 320 562 76 12',
     '(+57) 320-562-76-12',
@@ -71,7 +71,7 @@ test('phone logic validation', () => {
   })
 })
 
-test('phone logic validation for bad formats', () => {
+test('Phone logic validation for bad formats', () => {
   let phones = [
     '(+57 320 562 76 12',
     '(57) 320-562-76-12',
