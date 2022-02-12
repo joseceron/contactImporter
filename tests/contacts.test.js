@@ -44,7 +44,6 @@ test('should process files', async() => {
     .post('/contacts')
     .send({files})
     .then(res => {
-      console.log('then: ')
       expect('files' in res && 'storagedContacts' in res)
     })
 })

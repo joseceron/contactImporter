@@ -4,7 +4,7 @@
   "description": "Homework for Koombea, this is a contact importer project to handle csv files and set information to database",
   "main": "index.js",
   "scripts": {
-    "test": "env-cmd test.env jest --watch"
+    "test": "env-cmd -f ./test.env jest --watch"
   },
   "jest": {
     "testEnvironment": "node"
@@ -15,6 +15,7 @@
     "aes256": "^1.0.4",
     "axios": "^0.25.0",
     "dotenv": "^16.0.0",
+    "env-cmd": "^10.1.0",
     "express": "^4.17.2",
     "is-email": "^1.0.2",
     "is-email-validation": "0.0.5",
