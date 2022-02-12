@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Homework for Koombea, this is a contact importer project to handle csv files and set information to database",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "scripts": {    
+    "test": "jest"
   },
   "author": "Jose Ceron",
   "license": "ISC",
@@ -17,5 +17,8 @@
     "is-email-validation": "0.0.5",
     "moment": "^2.29.1",
     "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "jest": "^23.6.0"
   }
 }
