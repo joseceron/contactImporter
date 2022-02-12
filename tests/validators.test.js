@@ -4,6 +4,14 @@ const {
   isValidPhone
 } = require("../utils/validators");
 
+const cards = require("../utils/cards")
+
+const {
+  encryptCreditCardNumber,
+  decryptCreditCardNumber,
+  showLastFourDigits
+} = require("../utils/encrypt");
+
 test('Are valid names?', () => {
 
   let names = [
@@ -89,5 +97,13 @@ test('Phone logic validation for bad formats', () => {
   phones.forEach(phone => {
     let isValid = isValidPhone(phone)
     expect(isValid).toBe(false)
+  })
+})
+
+test('Encrypt credit card numbers', () => {
+  cards.map(card => {
+    let encrypted = encryptCreditCardNumber(card.number)
+    let decrypted = decryptCreditCardNumber(encrypted)
+    expect(decrypted).toBe(card.number)
   })
 })

@@ -8,9 +8,8 @@ const Petitions = require("../utils/petitions")
 const URL_FIREBASE_DB = process.env.URL_FIREBASE_DB
 
 router.post("/contacts", async (req, res) => {
-  
-    let body = req.body;
-    let files = body.files;    
+  let body = req.body;
+  let files = body.files;    
 
     files = fileUtils.processFiles(files)
     let url = URL_FIREBASE_DB+ 'contacts.json'

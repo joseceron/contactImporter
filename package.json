@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "Homework for Koombea, this is a contact importer project to handle csv files and set information to database",
   "main": "index.js",
-  "scripts": {    
-    "test": "jest"
+  "scripts": {
+    "test": "env-cmd test.env jest --watch"
+  },
+  "jest": {
+    "testEnvironment": "node"
   },
   "author": "Jose Ceron",
   "license": "ISC",
@@ -16,9 +19,11 @@
     "is-email": "^1.0.2",
     "is-email-validation": "0.0.5",
     "moment": "^2.29.1",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "watchman": "^1.0.0"
   },
   "devDependencies": {
-    "jest": "^23.6.0"
+    "jest": "^23.6.0",
+    "supertest": "^3.4.1"
   }
 }

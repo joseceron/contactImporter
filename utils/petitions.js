@@ -18,6 +18,7 @@ const postRequest = (data, logs=false) => {
         reject(error);
       } else {
         // console.log('body: ', body)
+        // console.log(response.statusCode)
         const dataParsed = JSON.parse(body);
         if (logs) {
           console.log("petitions-resolve:", body);
