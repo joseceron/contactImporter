@@ -7,13 +7,16 @@ This is a project that has two components. The first one is the front end develo
 this project is to import contacts from .csv files and
 storage in database (firebase database).
 
-[Download the .csv file](https://drive.google.com/file/d/1T7H4lSO8TBhCJh0KE3w9VQKoAP7hxFUk/view?usp=sharing) in order to upload and validate the process.
+[Download the .csv files for testing](https://drive.google.com/drive/folders/1R8N3__s1giWs05OXebOVr1QKs4gWwDvP?usp=sharing) in order to upload and validate the process.
+
  
 ### Table of Contents
  
-- [Installation](#installation)
-- [Usage](#usage)
-- [Versioning](#versioning)
+- [Installation server](#installation)
+- [Usage server](#usageserver)
+- [Installation frontend](#usage)
+- [Usage frontend](#usagefront)
+
  
 #### Clone repo Server
 ``` bash
@@ -28,7 +31,7 @@ $ nvm use 12.3.0
 $ npm install
 ```
  
-#### Usage
+#### Usage server
  
 ``` bash
 # serve with hot reload at localhost:3000
@@ -58,4 +61,8 @@ $ npm install
 npm run serve
  
 ```
+
+You can login with these credentials: 
+user: tester@gmail.com
+password: 123456
 
