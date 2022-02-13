@@ -56,4 +56,25 @@ router.post("/contacts", async (req, res) => {
     })    
 });
 
+router.post("/validateContacts",  (req, res) => {
+  let body = req.body;
+  let contactsStr = body.contacts;
+
+  let rows = contactsStr.split("\r\n");
+
+  if(rows.length < 2){
+    res.status(400).send('The file must have at least two rows. The 1st row is the header and 1 contact')
+  }
+
+  let header = rows[0].split(',')
+
+  if(header.length < 6){
+    res.status(400).send('The file has to have 6 columns')
+  }
+  if(header.length > 6){
+    res.status(400).send('The file has to have at most 6 columns')
+  }
+  res.status(200).send(header)
+});
+
 module.exports = router;
