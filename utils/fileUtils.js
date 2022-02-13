@@ -17,25 +17,18 @@ const {
   showLastFourDigits
 } = require("../utils/encrypt");
 
-const processFiles = files => {
+const processFiles = (files) => {
   files.map(file => {
+    let headers = file.headers
     let contacts = file.contacts;
     let rows = contacts.split("\r\n");
 
-    let fieldOrder = [
-      "name",
-      "dof",
-      "phone",
-      "address",
-      "credit_card",
-      "email"
-    ];
     let contactsParsed = [];
-
+    rows.shift()
     rows.map(contact => {
       let item = contact.split(",");
       let contactObj = {};
-      fieldOrder.forEach((colum, i) => {
+      headers.forEach((colum, i) => {
         contactObj[colum] = item[i];
       });
       franchiseFound = cards.find(
@@ -101,8 +94,10 @@ const saveContacts = (file, storagedContacts) => {
     );
 
     let contactsPromises = [];
-    if (contactsToSave.length == 0) resolve(file);
-    else {
+    if (contactsToSave.length == 0) {
+      file['status'] = 'Failed'
+      resolve(file);
+    }else {
       
       contactsToSave.map(async (contactsToSaveItem, i) => {
         isContactFound = storagedContacts.find(
@@ -144,6 +139,13 @@ const saveContacts = (file, storagedContacts) => {
 
     return Promise.all(contactsPromises).then(resultPromises => {
       file.contacts = [...contactsToSave, ...contactsWithError];
+      let contactsSize = file.contacts.length
+      let contactsWithErrorFound = file.contacts.filter(
+        contact => contact.errors.length > 0
+      );
+      if(contactsWithErrorFound.length == contactsSize)
+        file['status'] = 'Failed'
+      else file['status'] = 'Finished'
       resolve(file);
     });
   });
