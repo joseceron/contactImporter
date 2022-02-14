@@ -153,13 +153,13 @@ const saveContacts = (file, storagedContacts) => {
 
 formatContacts = (contacts, userToken) => {
   let contactsByUser = contacts.filter(item =>
-    item.user_token = userToken)
+    item.user_token == userToken)
   contactsByUser.map(contactItem => {
     let number = decryptCreditCardNumber(contactItem.credit_card)
     let codifyNum = showLastFourDigits(number)
     contactItem.credit_card = codifyNum
   })
-  return contacts;
+  return contactsByUser;
 };
 
 module.exports = {
