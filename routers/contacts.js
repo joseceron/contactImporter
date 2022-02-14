@@ -59,6 +59,10 @@ router.post("/contacts", async (req, res) => {
 router.post("/validateContacts", (req, res) => {
   let body = req.body;
   let contactsStr = body.contacts;
+
+  if(contactsStr == "")
+  res.status(204).send("No content in the file");
+
   let rows = contactsStr.split("\r\n");
 
   //TBD set validation for empty file
@@ -74,10 +78,10 @@ router.post("/validateContacts", (req, res) => {
   let header = rows[0].split(",");
 
   if (header.length < 6) {
-    res.status(400).send("The file has to have 6 columns");
+    res.status(400).send("The file has to have 6 columns: name, date of birth, phone, address, credit card number and email");
   }
   if (header.length > 6) {
-    res.status(400).send("The file has to have at most 6 columns");
+    res.status(400).send("The file has to have at most 6 columns: name, date of birth, phone, address, credit card number and email");
   }
   res.status(200).send(header);
 });
