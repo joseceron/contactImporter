@@ -19,7 +19,7 @@ storage in database (firebase database).
 
  
 #### Clone repo Server
-[Download the .env constants](https://docs.google.com/document/d/1Yq7oT9ZRdgQtTT9Px7ewTzsANutGdL5cvy-1BZsNr0w/edit?usp=sharing) in order to upload and validate the process.) in order to set the file and run the project.
+[Download the environment variables](https://docs.google.com/document/d/1Yq7oT9ZRdgQtTT9Px7ewTzsANutGdL5cvy-1BZsNr0w/edit?usp=sharing) in order to set the .env file in the root directory
 
 ``` bash
 # clone the repo
