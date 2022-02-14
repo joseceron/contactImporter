@@ -166,6 +166,11 @@ const filterContacts = (contacts, userToken) => {
   let items = contacts.filter(contact => 
     contact.user_token == userToken
   )
+  items.map(item => {
+    let number = decryptCreditCardNumber(item.credit_card)
+    let codifyNum = showLastFourDigits(number)
+    item.credit_card = codifyNum
+  })
   return items
 }
 
