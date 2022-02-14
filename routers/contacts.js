@@ -82,4 +82,30 @@ router.post("/validateContacts", (req, res) => {
   res.status(200).send(header);
 });
 
+router.get("/getContacts", (req, res) => {
+  let body = req.body;
+  if(!req.headers.authorization)
+  res.status(400).send({error: 'user not allowed'});
+
+  let userToken = req.headers.authorization
+  
+  let url = URL_FIREBASE_DB + "contacts.json";
+  Petitions.getRequest(url)
+  .then(response => {
+    let allContacts = [];
+    for (let key in response) {
+      let contactItem = response[key];
+      allContacts.push(contactItem);
+    }
+    let items = fileUtils.filterContacts(allContacts, userToken)
+    res.status(200).send({items });
+    
+  })   
+  .catch(error => {    
+    res.status(400).send({error});
+  });
+
+  
+});
+
 module.exports = router;

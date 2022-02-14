@@ -162,8 +162,16 @@ formatContacts = (contacts, userToken) => {
   return contactsByUser;
 };
 
+const filterContacts = (contacts, userToken) => {
+  let items = contacts.filter(contact => 
+    contact.user_token == userToken
+  )
+  return items
+}
+
 module.exports = {
   processFiles,
   saveContacts,
-  formatContacts
+  formatContacts,
+  filterContacts
 };
