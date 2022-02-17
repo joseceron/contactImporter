@@ -17,6 +17,8 @@ const {
   showLastFourDigits
 } = require("../utils/encrypt");
 
+const Contact = require("../models/contact")
+
 const processFiles = (files) => {
   files.map(file => {
     let headers = file.headers
@@ -82,10 +84,9 @@ const validateContacts = contacts => {
   return contacts;
 };
 
-const saveContacts = (file, storagedContacts) => {
+const saveContacts = (file, storagedContacts, userToken) => {
   return new Promise((resolve, reject) => {
     let contacts = file.contacts;
-    let userToken = file.userToken;
     let fileName = file.fileName;
 
     let contactsToSave = contacts.filter(contact => contact.errors.length == 0);
@@ -122,16 +123,11 @@ const saveContacts = (file, storagedContacts) => {
             ),
             franchise: contactsToSaveItem.franchise,
             email: contactsToSaveItem.email,
-            fileName,
+            file_name: fileName,
             user_token: userToken
           };
 
-          let payload = {
-            url: URL_FIREBASE_DB + "contacts.json",
-            body
-          };
-
-          let created = Petitions.postRequest(payload);
+          let created = Contact.createContact(body)          
           contactsPromises.push(created);
         }
       });
@@ -151,15 +147,14 @@ const saveContacts = (file, storagedContacts) => {
   });
 };
 
-formatContacts = (contacts, userToken) => {
-  let contactsByUser = contacts.filter(item =>
-    item.user_token == userToken)
-  contactsByUser.map(contactItem => {
+formatContacts = (contacts) => {
+  
+  contacts.map(contactItem => {
     let number = decryptCreditCardNumber(contactItem.credit_card)
     let codifyNum = showLastFourDigits(number)
     contactItem.credit_card = codifyNum
   })
-  return contactsByUser;
+  return contacts;
 };
 
 const filterContacts = (contacts, userToken) => {

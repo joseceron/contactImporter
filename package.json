@@ -20,7 +20,9 @@
     "is-email": "^1.0.2",
     "is-email-validation": "0.0.5",
     "moment": "^2.29.1",
+    "pg": "^8.7.3",
     "request": "^2.88.2",
+    "sequelize": "^6.16.1",
     "watchman": "^1.0.0"
   },
   "devDependencies": {
